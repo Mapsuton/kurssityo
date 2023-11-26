@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import { View, Text, FlatList } from 'react-native';
 import * as SQLite from 'expo-sqlite';
-import { ListItem, Icon } from '@rneui/themed';
+import { ListItem, Icon, Avatar } from '@rneui/themed';
 import { StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {koirat} from './DogScreen';
@@ -35,8 +35,9 @@ const deleteItem = (id) => {
 };
 
     renderItem = ({ item }) => (
-        <ListItem style={styles.list} bottomDivider>
-        <ListItem.Content> 
+        <ListItem  bottomDivider>
+        <ListItem.Content style={styles.list}> 
+        <Avatar rounded source={{uri: item.photo}} />
         <ListItem.Title>{item.name}</ListItem.Title>
         <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
         <ListItem.Subtitle>{item.info}</ListItem.Subtitle>
@@ -44,7 +45,7 @@ const deleteItem = (id) => {
         <Icon
           name={"delete"}
           type={"material-community"}
-          color={"#ccc"}
+          color={"red"}
           onPress={() => deleteItem(item.id)}
         />
         </ListItem>
@@ -63,10 +64,10 @@ return (
 
 const styles = StyleSheet.create({
     list: {
-
+      flexdirection: 'row',
       backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+
+
     },
   });
   

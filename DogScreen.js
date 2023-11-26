@@ -30,31 +30,15 @@ export default function DogScreen({ navigation }) {
         setPermission(status == 'granted');
     };
 
-    // const onPressHandler = () => {
-    //     navigation.navigate(koirat.db);
-    // }
 
     const snap = async () => {
         if (camera) {
             const photo = await camera.current.takePictureAsync({ base64: true });
             setPhotoName(photo.uri);
             setPhotoBase64(photo.base64);
-            // const source = photo.uri;
-            // cam.pausePreview();
-            // await handleSave(source);
-            // cam.resumePreview();
+            
         }
     };
-
-    // const handleSave = async (photo) => {
-    //     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    //     if (status === "granted") {
-    //       const assert = await MediaLibrary.createAssetAsync(photo);
-    //       await MediaLibrary.createAlbumAsync("Koirat", assert);
-    //     } else {
-    //       console.log("Ei medialupaa");
-    //     }
-    //   };
 
     useEffect(() => {
         db.transaction(tx => {

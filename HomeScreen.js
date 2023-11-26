@@ -18,14 +18,15 @@ export default function HomeScreen() {
         if (status !== 'granted') {
           setErrorMsg('Permission to access location was denied');
           return;
-        }
-  
-        let loc = await Location.getCurrentPositionAsync({});
+        } else {
+          let loc = await Location.getCurrentPositionAsync({});
         setLocation(loc);
         setLat(loc.coords.latitude);
         setLon(loc.coords.longitude);
         
+        }
         getSaa();
+        
       })();
     }, []);
 
